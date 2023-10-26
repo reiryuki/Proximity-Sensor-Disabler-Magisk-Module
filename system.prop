@@ -1,0 +1,5 @@
+# prop
+ro.qti.sensors.proximity=false
+ro.vendor.sensors.proximity=false
+
+
