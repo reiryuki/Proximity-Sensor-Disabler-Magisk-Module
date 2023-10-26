@@ -1,0 +1,1 @@
+# Proximity-Sensor-Disabler-Magisk-Module
