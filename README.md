@@ -1,7 +1,7 @@
 # Proximity Sensor Disabler Magisk Module
 
 ## Descriptions
-- Disables proximity sensor in any Android version or fixes proximity sensor instead in some ROMs
+- Disables proximity sensor in any Android version or fixes proximity sensor issue instead in some ROMs
 
 ## Requirements
 - Magisk or KernelSU installed
