@@ -1,7 +1,7 @@
 # Proximity Sensor Disabler Magisk Module
 
 ## Descriptions
-- Disables proximity sensor in any Android version
+- Disables proximity sensor in any Android version or fixes proximity sensor instead in some ROMs
 
 ## Requirements
 - Magisk or KernelSU installed
@@ -16,6 +16,7 @@
 - Android 12 AncientOS ROM
 - Android 12.1 Nusantara ROM
 - Android 13 Nusantara ROM, AOSP ROM, & CrDroid ROM
+- Android 14 LineageOS ROM
 
 ## Optionals
 - Global: https://t.me/androidryukimodsdiscussions/60861
