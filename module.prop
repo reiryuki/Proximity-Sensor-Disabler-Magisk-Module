@@ -1,8 +1,8 @@
 id=ProximitySensorDisabler
 name=Proximity Sensor Disabler
-version=v0.2
-versionCode=2
+version=v0.3
+versionCode=3
 author=Rei Ryuki the Fixer
-description=Disables proximity sensor in any Android version or fixes proximity sensor instead in some ROMs.
+description=Removes android.hardware.sensor.proximity feature systemlessly. Disables proximity sensor completely in some supported ROMs. Disables proximity fusion sensor in some ROMs.
 
 
