@@ -1,12 +1,10 @@
 # Proximity Sensor Disabler Magisk Module
 
 ## Descriptions
-- Removes android.hardware.sensor.proximity feature systemlessly
-- Disables proximity sensor completely in some supported ROMs
-- Disables proximity fusion sensor in some ROMs
+- Disables proximity sensor or disables proximity fusion sensor or removes android.hardware.sensor.proximity feature systemlessly.
 
 ## Requirements
-- Magisk or KernelSU installed
+- Magisk or Kitsune Mask or KernelSU or Apatch installed
 
 ## Installation Guide & Download Link
 - Install this module https://www.pling.com/p/2100679/ via Magisk app or KernelSU or Recovery if Magisk installed

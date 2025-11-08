@@ -67,12 +67,15 @@ if [ "`grep_prop proximity.disabler $OPTIONALS`" == fusion ]; then
     rm -rf $MODPATH/system
     sed -i 's|ro.vendor.sensors.proximity|#ro.vendor.sensors.proximity|g' $MODPATH/system.prop
     sed -i 's|ro.qti.sensors.proximity|#ro.qti.sensors.proximity|g' $MODPATH/system.prop
+    sed -i 's|ro.sony.sensors.proximity|#ro.sony.sensors.proximity|g' $MODPATH/system.prop
     ui_print " "
   else
     abort "! This ROM does not support proximity fusion"
   fi
 else
-  if ! echo "$STRINGS" | grep -Eq 'ro.vendor.sensors.proximity|ro.qti.sensors.proximity'; then
+  if echo "$STRINGS" | grep -Eq 'ro.vendor.sensors.proximity|ro.qti.sensors.proximity|ro.sony.sensors.proximity'; then
+    rm -rf $MODPATH/system
+  else
     ui_print "- Not possible to deactivate proximity sensor completely"
     ui_print "  to this ROM but don't worry, this module now removes"
     ui_print "  hardware proximity feature systemlessly, so it's the same"
