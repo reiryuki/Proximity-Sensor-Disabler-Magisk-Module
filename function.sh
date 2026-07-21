@@ -1,4 +1,7 @@
 # function
+apex_list() {
+APXS=`ls -dp /apex/* | grep '/$' | sed -e 's|/$||' -e 's|^/apex/sharedlibs$||'`
+}
 mount_partitions_in_recovery() {
 if [ "$BOOTMODE" != true ]; then
   BLOCK=/dev/block/bootdevice/by-name
@@ -13,50 +16,26 @@ if [ "$BOOTMODE" != true ]; then
     || mount -o rw -t auto $BLOCK/cust $DIR\
     || mount -o rw -t auto $BLOCK2/cust $DIR
   fi
-  DIR=/product
-  if [ -d $DIR ] && ! is_mounted $DIR; then
-    mount -o rw -t auto $BLOCK$DIR$SLOT $DIR\
-    || mount -o rw -t auto $BLOCK2$DIR$SLOT $DIR
-  fi
-  DIR=/system_ext
-  if [ -d $DIR ] && ! is_mounted $DIR; then
-    mount -o rw -t auto $BLOCK$DIR$SLOT $DIR\
-    || mount -o rw -t auto $BLOCK2$DIR$SLOT $DIR
-  fi
-  DIR=/odm
-  if [ -d $DIR ] && ! is_mounted $DIR; then
-    mount -o rw -t auto $BLOCK$DIR$SLOT $DIR\
-    || mount -o rw -t auto $BLOCK2$DIR$SLOT $DIR
-  fi
-  DIR=/my_product
-  if [ -d $DIR ] && ! is_mounted $DIR; then
-    mount -o rw -t auto $BLOCK$DIR $DIR\
-    || mount -o rw -t auto $BLOCK2$DIR $DIR
-  fi
+  DIRS="/product /system_ext /odm"
+  for DIR in $DIRS; do
+    if [ -d $DIR ] && ! is_mounted $DIR; then
+      mount -o rw -t auto $BLOCK$DIR$SLOT $DIR\
+      || mount -o rw -t auto $BLOCK2$DIR$SLOT $DIR
+    fi
+  done
+#  apex_list
+  DIRS="/my_product /cache /persist /metadata /cust /klogdump
+        $APXS"
+  for DIR in $DIRS; do
+    if [ -d $DIR ] && ! is_mounted $DIR; then
+      mount -o rw -t auto $BLOCK$DIR $DIR\
+      || mount -o rw -t auto $BLOCK2$DIR $DIR
+    fi
+  done
   DIR=/data
   if [ -d $DIR ] && ! is_mounted $DIR; then
     mount -o rw -t auto $BLOCK/userdata $DIR\
     || mount -o rw -t auto $BLOCK2/userdata $DIR
-  fi
-  DIR=/cache
-  if [ -d $DIR ] && ! is_mounted $DIR; then
-    mount -o rw -t auto $BLOCK$DIR $DIR\
-    || mount -o rw -t auto $BLOCK2$DIR $DIR
-  fi
-  DIR=/persist
-  if [ -d $DIR ] && ! is_mounted $DIR; then
-    mount -o rw -t auto $BLOCK$DIR $DIR\
-    || mount -o rw -t auto $BLOCK2$DIR $DIR
-  fi
-  DIR=/metadata
-  if [ -d $DIR ] && ! is_mounted $DIR; then
-    mount -o rw -t auto $BLOCK$DIR $DIR\
-    || mount -o rw -t auto $BLOCK2$DIR $DIR
-  fi
-  DIR=/cust
-  if [ -d $DIR ] && ! is_mounted $DIR; then
-    mount -o rw -t auto $BLOCK$DIR $DIR\
-    || mount -o rw -t auto $BLOCK2$DIR $DIR
   fi
 fi
 }
